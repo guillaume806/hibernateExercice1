@@ -89,6 +89,19 @@ public class Test {
 
 
     }
+
+
+    private static void productByStock(int stock){
+        Query<Product> Query = session.createQuery("from Product where stock <= :stockValue ");
+        Query.setParameter("stockValue", stock);
+        List<Product> productList = Query.list();
+        for (Product p: productList) {
+            System.out.println(p.getMarque());
+        }
+
+
+
+    }
     private static void productByDate(Date startDate,Date endDate) {
         //  Date startDate;
         //  Date endDate;

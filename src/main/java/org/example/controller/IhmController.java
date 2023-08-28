@@ -28,6 +28,7 @@ public class IhmController {
         do {
             System.out.println("=== Product Manager ===");
             System.out.println("1. Afficher la liste des produits entre 2 date");
+            System.out.println("2. Afficher la reference et les numeros des produits inferieure au stock données ");
             System.out.println("0. Quitter");
             System.out.print("Choix : ");
 
@@ -40,6 +41,9 @@ public class IhmController {
             switch (choice) {
                 case 1:
                     EnterDate(scanner);
+                    break;
+                case 2:
+                    Enterstock(scanner);
                     break;
 
 
@@ -55,6 +59,12 @@ public class IhmController {
 
 
 
+    }
+
+    private static void Enterstock(Scanner scanner) {
+        System.out.println("entrer le stock");
+        Scanner stock= scanner;
+        Test.productByStock(int stock);
     }
 
     private static void EnterDate(Scanner scanner) {
