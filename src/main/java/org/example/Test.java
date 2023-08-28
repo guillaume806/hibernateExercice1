@@ -1,6 +1,6 @@
 package org.example;
 
-import org.example.entities.Personne;
+import org.example.entities.Product;
 import org.example.entities.Product;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -24,7 +24,7 @@ public class Test {
 //        session.getTransaction().begin();
 //        Product pro = new Product();
 //        pro.setMarque("addidas");
-//        pro.setPrix(Double.valueOf("55.2"));
+//        pro.setPrix(Double.valueOf("105.2"));
 //        pro.setStock(Integer.parseInt("58"));
 //        pro.setDateAchat(Date.valueOf("2021-12-6"));
 //        pro.setReference("5454558");
@@ -61,6 +61,7 @@ public class Test {
 
         // Récupérer la liste des produit
         // le support utilise l'interface query au lieu de la classe générique query (l'interface est dépréciée)
+
         Query<Product> productQuery = session.createQuery("from Product");
 
         System.out.println("################ List");
@@ -69,6 +70,18 @@ public class Test {
         for (Product p: products) {
             System.out.println(p.getMarque());
         }
+
+
+
+        //afficher liste des produits>100euros
+
+        Query<Product> productQuery1 = session.createQuery("from Product where prix >= '100' ");
+        // Récupérer une liste avec les personnes dont le nom est toto
+        List<Product> productList = productQuery1.list();
+        for (Product p: productList) {
+            System.out.println(p.getMarque());
+        }
+
 
 
     }
