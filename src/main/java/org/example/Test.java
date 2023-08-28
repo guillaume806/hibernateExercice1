@@ -1,5 +1,6 @@
 package org.example;
 
+import org.example.entities.Personne;
 import org.example.entities.Product;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -17,16 +18,26 @@ public class Test {
         Session session = sessionFactory.openSession();
 
         // Ajout d'un produit
-        session.getTransaction().begin();
-        Product pro = new Product();
-        pro.setMarque("nike");
-        pro.setPrix(Double.valueOf("50.2"));
-        pro.setStock(Integer.parseInt("2"));
-        pro.setDateAchat(Date.valueOf("2023-12-20"));
-        pro.setReference("545454");
-        session.save(pro);
-        System.out.println("ID du produit : " + pro.getId());
 
-        session.getTransaction().commit();
+//        session.getTransaction().begin();
+//        Product pro = new Product();
+//        pro.setMarque("addidas");
+//        pro.setPrix(Double.valueOf("55.2"));
+//        pro.setStock(Integer.parseInt("58"));
+//        pro.setDateAchat(Date.valueOf("2021-12-6"));
+//        pro.setReference("5454558");
+//        session.save(pro);
+//        System.out.println("ID du produit : " + pro.getId());
+//
+//        session.getTransaction().commit();
+
+
+
+
+        // Récupérer un produit
+
+        session.getTransaction().begin();
+        Product p = session.load(Product.class,2L);
+        System.out.println(p.getMarque());
     }
 }
