@@ -39,5 +39,23 @@ public class Test {
         session.getTransaction().begin();
         Product p = session.load(Product.class,2L);
         System.out.println(p.getMarque());
+
+        //On supprimme avec la methode delete
+
+        session.getTransaction().begin();
+        Product p = session.load(Product.class,3L);
+        System.out.println(p.getMarque());
+        session.delete(p);
+        session.getTransaction().commit();
+
+
+        // MODIFIER PRODUIT
+
+        session.getTransaction().begin();
+        Product p = session.load(Product.class,1L);
+        p.setMarque("VANS");
+        session.update(p);
+        session.getTransaction().commit();
+
     }
 }
