@@ -8,6 +8,8 @@ import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 
+import java.sql.Date;
+
 public class test {
     public static void main(String[] args){
         StandardServiceRegistry registre = new StandardServiceRegistryBuilder().configure().build();
@@ -21,7 +23,7 @@ public class test {
         pro.setMarque("nike");
         pro.setPrix(Double.valueOf("50.2"));
         pro.setStock(Integer.parseInt("2"));
-        pro.setDateAchat("12-12-2022");
+        pro.setDateAchat(Date.valueOf("10-12-20-2023"));
         pro.setReference("545454");
         session.save(pro);
         System.out.println("ID du produit : " + pro.getId());
