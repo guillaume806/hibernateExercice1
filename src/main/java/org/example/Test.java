@@ -9,15 +9,18 @@ import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.query.Query;
 
-import java.sql.Date;
+import java.util.Date;
 import java.util.List;
 
 public class Test {
-    public static void main(String[] args){
-        StandardServiceRegistry registre = new StandardServiceRegistryBuilder().configure().build();
-        SessionFactory sessionFactory = new MetadataSources(registre).buildMetadata().buildSessionFactory();
 
-        Session session = sessionFactory.openSession();
+
+    private static StandardServiceRegistry registre = new StandardServiceRegistryBuilder().configure().build();
+    private static SessionFactory sessionFactory = new MetadataSources(registre).buildMetadata().buildSessionFactory();
+
+    private static Session session = sessionFactory.openSession();
+    public static void main(String[] args){
+
 
         // Ajout d'un produit
 
@@ -75,14 +78,27 @@ public class Test {
 
         //afficher liste des produits>100euros
 
-        Query<Product> productQuery1 = session.createQuery("from Product where prix >= '100' ");
-        // Récupérer une liste avec les personnes dont le nom est toto
-        List<Product> productList = productQuery1.list();
-        for (Product p: productList) {
+//        Query<Product> productQuery1 = session.createQuery("from Product where prix >= '100' ");
+//        // Récupérer une liste avec les personnes dont le nom est toto
+//        List<Product> productList = productQuery1.list();
+//        for (Product p: productList) {
+//            System.out.println(p.getMarque());
+//        }
+
+
+
+
+    }
+    private static void productByDate(Date startDate,Date endDate) {
+        //  Date startDate;
+        //  Date endDate;
+        Query<Product> query = session.createQuery("from Product where dateachat BETWEEN :startDate AND :endDate");
+        query.setParameter("startDate", startDate);
+        query.setParameter("endDate", endDate);
+        List<Product> productList = query.list();
+        for (Product p : productList) {
             System.out.println(p.getMarque());
         }
-
-
 
     }
 }
