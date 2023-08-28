@@ -19,8 +19,8 @@ public class test {
         session.getTransaction().begin();
         Product pro = new Product();
         pro.setMarque("nike");
-        pro.setPrix("50.00");
-        pro.setStock("2");
+        pro.setPrix(Double.valueOf("50.2"));
+        pro.setStock(Integer.parseInt("2"));
         pro.setDateAchat("12-12-2022");
         pro.setReference("545454");
         session.save(pro);
